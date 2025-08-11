@@ -1,7 +1,7 @@
 import React, { use, useContext, useState } from 'react'
 import assets from '../assets/assets';
 import { AuthContext } from '../context/AuthContext.jsx';
-
+import logonew1 from '../assets/logonew1.png';
 const LoginPage = () => {
     const [currState,setCurrState]=useState('Sign up');
     const [fullName,setFullName]=useState('');
@@ -21,7 +21,7 @@ const LoginPage = () => {
   return (
     <div className='min-h-screen bg-cover bg-center flex items-center justify-center gap-8 sm:justify-evenly max-sm:flex-col backdrop-blur-2xl'>
         {/* left side */}
-        <img src={assets.logo_big} className='w-[min(30vw,250px)]'></img>
+        <img src={logonew1} className='w-[min(30vw,250px)]'></img>
         {/* right */}
         <form onSubmit={onSubmitHandler} className='border-2 bg-white/8 text-white border-gray-500 p-6 flex flex-col gap-6 rounded-lg shadow-lg'>
             <h2 className='font-medium text-2xl flex justify-between items-center'>{currState}{isDataSubmitted && <img onClick={()=>setIsDataSubmitted(false)} src={assets.arrow_icon} className='w-5 cursor-pointer'></img>}</h2>
