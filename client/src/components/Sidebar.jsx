@@ -8,6 +8,7 @@ const Sidebar = () => {
     const {selectedUser,setSelectedUser,users,getUsers,unseenMessages,setUnseenMessages}=useContext(ChatContext);
     const {logout,onlineUsers}=useContext(AuthContext);
     const [input,setInput]=useState(false);
+    const [menuOpen,setMenuOpen]=useState(false);
     const filteredUsers=input?users.filter((user)=>user.fullName.toLowerCase().includes(input.toLowerCase())):users;
     useEffect(()=>{
         getUsers();
@@ -21,9 +22,9 @@ const Sidebar = () => {
             
             <div className='flex items-center text-2xl gap-0'><img src={logonew} alt='logo' className='max-w-10'></img>TalkTime</div>
 
-            <div className='relative py-2 group'>
+            <div className='relative py-2 group' onClick={()=>setMenuOpen(prev=>!prev)}>
                 <img src={assets.menu_icon} className='max-h-5 cursor-pointer'></img>
-                <div className='absolute top-full right-0 z-20 w-32 p-5 rounded-md bg-[#282142] border border-gray-600 text-gray-100 hidden group-hover:block'> 
+                <div className={`absolute top-full right-0 z-20 w-32 p-5 rounded-md bg-[#282142] border border-gray-600 text-gray-100 md:group-hover:block ${menuOpen?'block':'hidden'}`}> 
                     <p onClick={()=>navigate('/profile')} className='text-sm cursor-pointer'>Edit Profile</p>
                     <hr className='my-2 border-2 border-gray-500'></hr>
                     <p onClick={()=>logout()} className='cursor-pointer text-sm'>Log Out</p>
